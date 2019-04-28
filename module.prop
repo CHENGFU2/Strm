@@ -1,7 +1,0 @@
-﻿id=DivineTurbo²
-name=DivineTurbo²
-version=v3.0
-versionCode=300
-author=CHENGFU|QQ:1229992436
-description=智能识别是否需要打开ZRAM（默认关闭），网络堵塞更换协议，增加快充协议（采用@乄代号9527 ，在此感谢此作者），prop部分优化，开启APTX，采用ACS充电控制，优化部分系统的Performance Boost Config，关闭在国内用不到的GMS，关闭SWAP到达流畅。（更多特性，请重启体验）
-minMagisk=1810
