@@ -42,13 +42,13 @@ print_modname() {
 ui_print "=========================="
 ui_print "                                                                   "
 ui_print "        Divine Turbo²®                     "
-ui_print "          V3.0                                   "
+ui_print "          V3.5                                   "
 ui_print "       "   
 ui_print "=========================="
 ui_print "-检测ID是否存在中，请稍后               "
 ui_print "-已通过检测                                              "
-ui_print "-编制时间：2019/4/28                    "
-ui_print "-PM9:00                                "
+ui_print "-编制时间：2019/4/29                    "
+ui_print "-PM12:00                                "
 ui_print "========================== "
 }
 
