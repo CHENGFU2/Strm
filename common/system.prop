@@ -76,6 +76,23 @@ doze.pulse.sigmotion=0
 doze.shake.acc.threshold=10
 doze.vibrate.sigmotion=0
 debug.doze.component=0
+wifi.supplicant_scan_interval=300
+persist.sys.purgeable_assets=1
+persist.service.pcsync.enable=0
+persist.service.lgospd.enable=0
+profiler.force_disable_err_rpt=1
+profiler.force_disable_ulog=1
+ro.config.nocheckin=1
+ro.kernel.android.checkjni=0
+persist.sys.use_dithering=0
+ro.kernel.checkjni=0
+debug.kill_allocating_task=0
+ro.debuggable=1
+dalvik.vm.checkjni=false
+debugtool.anrhistory=0
+profiler.debugmonitor=false
+profiler.launch=false
+profiler.hung.dumpdobugreport=false
 
 # Faster boot mode
 # persist.sys.shutdown.mode=hibernate

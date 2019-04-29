@@ -123,7 +123,7 @@ print_modname() {
 ui_print "=========================="
 ui_print "                                                                   "
 ui_print "        Divine Turbo²®                     "
-ui_print "          V4.1                                   "
+ui_print "          V4.5                                   "
 ui_print "       "   
 ui_print "=========================="
 ui_print "-检测ID是否存在中，请稍后               "
