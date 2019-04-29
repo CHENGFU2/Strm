@@ -1,11 +1,23 @@
-# Divine-Turbo
-Magisk
+＃Divine-Turbo2
+这是一个对手机全面优化的模块
 
-From the best android optimizer.
-Top team from China
+为什么你可能想要使用它
+在安卓O以上，出现的漏洞真的是千层百出。对系统的优化也是稀少。我们模块就彻底解决了这个问题。
 
-We make optimization is serious.
+如果是MIUI系统，请在开发者模式中关闭“MIUI优化”
 
-We also have a variety of metaphysical optimizations
+目前，模块的用户高达五千人。好评数十分
 
-For exampleIntelligent identification of whether you need to turn on zram (default shutdown), network jam replacement protocol, add fast charge protocol (use @/code 9527, thank you),Prop partial optimization, turn on aptx, use ACS charging control, optimize partial system performance boost config,Close the GMS that is not used in the country, close the swap to smooth.(For more features, restart the experienceIntelligent identification of whether you need to turn on zram (default shutdown), network jam replacement protocol, add fast charge protocol (use @/code 9527, thank you),Prop partial optimization, turn on aptx, use ACS charging control, optimize partial system performance boost config,Close the GMS that is not used in the country, close the swap to smooth.(For more features, download the experience))
+注意：谷歌框架和谷歌商店可能会FC
+
+开启GMS不能解决这个问题吗？
+是。
+
+
+简而言之，这个模块似乎很复杂。为什么不能只安装模块并让用户决定之后安装什么？
+
+积分
+Divine Turbo项目为他们的精彩工作。
+
+优化功能如下：智能识别是否需要打开ZRAM（默认关闭），网络堵塞更换协议，增加快充协议（采用@乄代号9527 ，在此感谢此作者），prop部分优化，开启APTX，采用ACS充电控制，优化部分系统的Performance Boost Config，关闭在国内用不到的GMS，关闭SWAP到达流畅。
+（更多特性，请下载体验）
