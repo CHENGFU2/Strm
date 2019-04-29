@@ -123,7 +123,7 @@ print_modname() {
 ui_print "=========================="
 ui_print "                                                                   "
 ui_print "        Divine Turbo²®                     "
-ui_print "          V4.0                                   "
+ui_print "          V4.1                                   "
 ui_print "       "   
 ui_print "=========================="
 ui_print "-检测ID是否存在中，请稍后               "
@@ -138,7 +138,7 @@ ui_print "========================== "
 on_install() {
   # 以下是默认设置: 将 $ZIPFILE/system解压缩到 $MODPATH
   # 将逻辑扩展/更改为您想要的任何内容
-  ui_print "- 提取模块"
+  
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
 }
 

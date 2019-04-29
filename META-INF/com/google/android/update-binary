@@ -80,10 +80,10 @@ MODID=`grep_prop id $TMPDIR/module.prop`
 MODPATH=$MODULEROOT/$MODID
 
 print_modname
-#ui_print "    快如闪电   为优化而生     "
-#ui_print "        Divine Turbo²®               "
-#ui_print "           "
-#ui_print "           "
+
+ui_print "    快如闪电   为优化而生     "
+ui_print "        Divine Turbo²®               "
+ui_print "           "
 
 ##########################################################################################
 # 安装
@@ -135,7 +135,7 @@ for TARGET in $REPLACE; do
   mktouch $MODPATH$TARGET/.replace
 done
 
-ui_print "- 设置权限"
+ui_print "- 适配模块稳定性中，请稍后"
 set_permissions
 
 ##########################################################################################
@@ -147,5 +147,5 @@ imageless_magisk || unmount_magisk_img
 $BOOTMODE || recovery_cleanup
 rm -rf $TMPDIR $MOUNTPATH
 
-ui_print "- 安装完成"
+ui_print "请体验快如闪电的系统吧"
 exit 0
