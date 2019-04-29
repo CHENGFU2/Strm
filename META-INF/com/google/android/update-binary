@@ -151,5 +151,4 @@ $BOOTMODE || recovery_cleanup
 rm -rf $TMPDIR
 
 ui_print "请尽情享用流畅的系统吧"
-ui_print "在此鸣谢@乄代号9527 的各种教程"
 exit 0
