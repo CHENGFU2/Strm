@@ -3,7 +3,3 @@
 # (until [ -f /data/swapfile ]; do sleep 20; done
 # rm /data/swapfile &) &
 # exit 0
-
-(until [ -f /data/swapfile ]; do sleep 20; done
- rm /data/swapfile &) &
- exit 0

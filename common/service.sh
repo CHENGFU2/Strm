@@ -205,11 +205,47 @@ LOGDATA "# ================================="
 LOGDATA "#  BATTERY LEVEL: $BATT_LEV % "
 LOGDATA "#  BATTERY TECHNOLOGY: $BATT_TECH"
 LOGDATA "#  BATTERY HEALTH: $BATT_HLTH"
-LOGDATA "#  BATTERY TEMP: $BATT_TEMP ¡ãC"
+LOGDATA "#  BATTERY TEMP: $BATT_TEMP ï¿½ï¿½C"
 LOGDATA "#  BATTERY VOLTAGE: $BATT_VOLT VOLTS "
 LOGDATA "# =================================" 
 LOGDATA "#  FINISHED : $(date +"%d-%m-%Y %r")"
 
+# This script will be executed in late_start service mode
+sleep 35
+chmod 755 /sys/class/*/*/*
+chmod 755 /sys/module/*/*/*
+while true; do
+echo '1' > /sys/kernel/fast_charge/force_fast_charge
+echo '1' > /sys/class/power_supply/battery/allow_hvdcp3
+echo '0' > /sys/class/power_supply/battery/input_current_limited
+echo '1' >/sys/class/power_supply/battery/subsystem/usb/pd_allowed
+echo '1' > /sys/class/power_supply/battery/input_current_settled
+echo '150' >/sys/class/power_supply/bms/temp_cool
+echo '500' >/sys/class/power_supply/bms/temp_warm
+echo '3000' > /sys/module/qpnp_smbcharger/parameters/default_hvdcp_icl_ma
+echo '3000' > /sys/module/qpnp_smbcharger/parameters/default_dcp_icl_ma
+echo '3000' > /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma
+echo '3000' > /sys/module/dwc3_msm/parameters/dcp_max_current
+echo '3000' > /sys/module/dwc3_msm/parameters/hvdcp_max_current
+echo '3000' > /sys/module/phy_msm_usb/parameters/dcp_max_current
+echo '3000' > /sys/module/phy_msm_usb/parameters/hvdcp_max_current
+echo '3000' > /sys/module/phy_msm_usb/parameters/lpm_disconnect_thresh
+echo '3000000' > /sys/class/power_supply/dc/current_max
+echo '3000000' > /sys/class/power_supply/main/current_max
+echo '3000000' > /sys/class/power_supply/parallel/current_max
+echo '3000000' > /sys/class/power_supply/pc_port/current_max
+echo '3000000' > /sys/class/power_supply/qpnp-dc/current_max
+echo '3000000' > /sys/class/power_supply/battery/current_max
+echo '3000000' > /sys/class/power_supply/battery/input_current_max
+echo '3000000' > /sys/class/power_supply/usb/current_max
+echo '3000000' > /sys/class/power_supply/usb/hw_current_max
+echo '3500000' > /sys/class/power_supply/usb/pd_current_max
+echo '3500000' > /sys/class/power_supply/usb/ctm_current_max
+echo '3500000' > /sys/class/power_supply/usb/sdp_current_max
+echo '3300000' > /sys/class/power_supply/main/constant_charge_current_max
+echo '3500000' > /sys/class/power_supply/parallel/constant_charge_current_max
+echo '3500000' > /sys/class/power_supply/battery/constant_charge_current_max
+sleep 1
 
 
 
