@@ -105,10 +105,112 @@ do
 done
 
 IFS=$saveifs
+fi
+esac
+case ${SOC} in msm8996* | apq8096*) #sd820
+	update_clock_speed 280000 little min
+	update_clock_speed 280000 big min
+	# avoid permission problem, do not set 0444
+	write "/dev/cpuset/background/cpus" 1
+	write "/dev/cpuset/system-background/cpus" "0-1"
+	write "/dev/cpuset/foreground/cpus" "0-1,2-3"
+	write "/dev/cpuset/top-app/cpus" "0-1,2-3"
+	set_value 25 /proc/sys/kernel/sched_downmigrate
+	set_value 45 /proc/sys/kernel/sched_upmigrate
+	set_param cpu0 use_sched_load 1
+	set_param cpu${bcores} use_sched_load 1
+	# shared interactive parameters
+	set_param cpu0 timer_rate 20000
+	set_param cpu0 timer_slack 180000
+	set_param cpu0 boost 0
+	set_param cpu0 boostpulse_duration 0
+	set_param cpu${bcores} timer_rate 20000
+	set_param cpu${bcores} timer_slack 180000
+	set_param cpu${bcores} boost 0
+	set_param cpu${bcores} boostpulse_duration 0
+	if [ ${PROFILE} -eq 0 ];then
+	set_boost_freq "0:380000 2:380000"
+	set_param cpu0 above_hispeed_delay "18000 1180000:78000 1280000:98000"
+	set_param cpu0 hispeed_freq 1080000
+	set_param cpu0 go_hispeed_load 97
+	set_param cpu0 target_loads "80 380000:5 580000:42 680000:60 780000:70 880000:83 980000:92 1180000:97"
+	set_param cpu0 min_sample_time 18000
+	set_param cpu${bcores} above_hispeed_delay "18000 1280000:98000 1380000:58000 1480000:98000 1880000:138000"
+	set_param cpu${bcores} hispeed_freq 1180000
+	set_param cpu${bcores} go_hispeed_load 98
+	set_param cpu${bcores} target_loads "80 380000:53 480000:38 580000:63 780000:69 880000:85 1080000:93 1380000:72 1480000:98"
+	set_param cpu${bcores} min_sample_time 18000
+	set_param cpu2 min_sample_time 18000
+	elif [ ${PROFILE} -eq 1 ];then
+	set_boost_freq "0:380000 2:380000"
+	set_param cpu0 above_hispeed_delay "58000 1280000:98000 1580000:58000"
+	set_param cpu0 hispeed_freq 1180000
+	set_param cpu0 go_hispeed_load 98
+	set_param cpu0 target_loads "80 380000:9 580000:36 780000:62 880000:71 980000:87 1080000:75 1180000:98"
+	set_param cpu0 min_sample_time 18000
+	set_param cpu${bcores} above_hispeed_delay "38000 1480000:98000 1880000:138000"
+	set_param cpu${bcores} hispeed_freq 1380000
+	set_param cpu${bcores} go_hispeed_load 98
+	set_param cpu${bcores} target_loads "80 380000:39 480000:35 680000:29 780000:63 880000:71 1180000:91 1380000:83 1480000:98"
+	set_param cpu${bcores} min_sample_time 18000
+	elif [ ${PROFILE} -eq 2 ];then
+	set_boost_freq "0:380000 2:380000"
+	set_param cpu0 above_hispeed_delay "18000 1280000:98000 1480000:38000"
+	set_param cpu0 hispeed_freq 1180000
+	set_param cpu0 go_hispeed_load 97
+	set_param cpu0 target_loads "80 380000:7 480000:31 580000:13 680000:58 780000:63 980000:73 1180000:98"
+	set_param cpu0 min_sample_time 38000
+	set_param cpu${bcores} above_hispeed_delay "18000 1580000:98000 1880000:38000"
+	set_param cpu${bcores} hispeed_freq 1480000
+	set_param cpu${bcores} go_hispeed_load 98
+	set_param cpu${bcores} target_loads "80 380000:34 680000:40 780000:63 880000:57 1080000:72 1380000:78 1480000:98"
+	set_param cpu${bcores} min_sample_time 18000
+	set_param cpu2 min_sample_time 18000
+   	elif [ ${PROFILE} -eq 3 ];then
+	update_clock_speed 1080000 little min
+	set_param cpu0 above_hispeed_delay "18000 1480000:198000"
+	set_param cpu0 hispeed_freq 1080000
+	set_param cpu0 target_loads "80 1580000:90"
+	set_param cpu0 min_sample_time 38000
+	update_clock_speed 1380000 big min
+	set_param cpu${bcores} above_hispeed_delay "18000 1880000:198000"
+	set_param cpu${bcores} hispeed_freq 1380000
+	set_param cpu${bcores} target_loads "80 1980000:90"
+	set_p
 
-# Enjoy a better Android experience, and be kind to someone
 
-exit 0
+# =========
+# Google Services Drain fix by @Alcolawl @Oreganoian
+# =========
+LOGDATA "#  [INFO] Fixing SystemUpdateService BATTERY DRAIN"
+su -c pm enable com.google.android.gms/.update.SystemUpdateActivity 
+su -c pm enable com.google.android.gms/.update.SystemUpdateService
+su -c pm enable com.google.android.gms/.update.SystemUpdateService$ActiveReceiver 
+su -c pm enable com.google.android.gms/.update.SystemUpdateService$Receiver 
+su -c pm enable com.google.android.gms/.update.SystemUpdateService$SecretCodeReceiver 
+su -c pm enable com.google.android.gsf/.update.SystemUpdateActivity 
+su -c pm enable com.google.android.gsf/.update.SystemUpdatePanoActivity 
+su -c pm enable com.google.android.gsf/.update.SystemUpdateService 
+su -c pm enable com.google.android.gsf/.update.SystemUpdateService$Receiver 
+su -c pm enable com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver
+# FS-TRIM
+fstrim -v /cache
+fstrim -v /data
+fstrim -v /system
+LOGDATA "#  [INFO] EXECUTING FS-TRIM "
+# =========
+# Battery Check
+# =========
+LOGDATA "# =================================" 
+LOGDATA "#  BATTERY LEVEL: $BATT_LEV % "
+LOGDATA "#  BATTERY TECHNOLOGY: $BATT_TECH"
+LOGDATA "#  BATTERY HEALTH: $BATT_HLTH"
+LOGDATA "#  BATTERY TEMP: $BATT_TEMP °„C"
+LOGDATA "#  BATTERY VOLTAGE: $BATT_VOLT VOLTS "
+LOGDATA "# =================================" 
+LOGDATA "#  FINISHED : $(date +"%d-%m-%Y %r")"
+
+
 
 
 

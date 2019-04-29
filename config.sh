@@ -24,7 +24,7 @@
 AUTOMOUNT=true
 MODID=sRGBEnabler
 # 如果您需要加载 system.prop, 请把它设置为 true
-PROPFILE=
+PROPFILE=true
 
 # 如果您需要执行 post-fs-data 脚本, 请把它设置为 true
 POSTFSDATA=true
@@ -42,7 +42,7 @@ print_modname() {
 ui_print "=========================="
 ui_print "                                                                   "
 ui_print "        Divine Turbo²®                     "
-ui_print "          V3.6                                   "
+ui_print "          V3.65                                   "
 ui_print "       "   
 ui_print "=========================="
 ui_print "-检测ID是否存在中，请稍后               "
