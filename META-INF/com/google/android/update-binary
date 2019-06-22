@@ -82,7 +82,7 @@ MODPATH=$MODULEROOT/$MODID
 print_modname
 
 ui_print "    快如闪电   为优化而生     "
-ui_print "        Divine Turbo²®               "
+ui_print "-Strm By城府         "
 ui_print "           "
 
 ##########################################################################################

@@ -26,7 +26,7 @@ SKIPMOUNT=true
 PROPFILE=true
 
 # post-fs-data 启用=true,关闭=false
-POSTFSDATA=true
+POSTFSDATA=false
 
 # service.sh 启用=true,关闭=false
 LATESTARTSERVICE=true
@@ -50,6 +50,9 @@ REPLACE_EXAMPLE="
 # 在这里构建自定义列表
 REPLACE="
 "
+
+  
+
 
 ##########################################################################################
 #
@@ -122,24 +125,26 @@ REPLACE="
 print_modname() {
 ui_print "=========================="
 ui_print "                                                                   "
-ui_print "        Divine Turbo²®                     "
-ui_print "          V5.5                                   "
+ui_print "         Strm（magisk）                 "
+ui_print "          V3.4                                   "
 ui_print "       "   
 ui_print "=========================="
-ui_print "-检测ID是否存在中，请稍后               "
-ui_print "-已通过检测                                              "
-ui_print "-编制时间：2019/4/29                    "
-ui_print "-谢谢支持！                                "
-ui_print "========================== "
+ui_print "-QQ群:985974164               "
+ui_print "-作者QQ:1229992436                       "
+ui_print "-感谢使用~                                         "
+ui_print "-编制时间：2019/6/22                    "
+ui_print "-安卓版本： [API]                         "
+ui_print "========================= "
 }
 
 # 在安装脚本中将模块文件复制/解压缩到 $MODPATH.
 
 on_install() {
+  ui_print "-设置模块权限中"
+  
   # 以下是默认设置: 将 $ZIPFILE/system解压缩到 $MODPATH
   # 将逻辑扩展/更改为您想要的任何内容
   
-  unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
 }
 
 # 只有一些特殊文件需要特定权限
@@ -148,7 +153,23 @@ on_install() {
 
 set_permissions() {
   # 以下是默认规则,请勿删除
+     bin=xbin
+  if [ ! -d $SYS/xbin ]; then
+    bin=bin
+    mkdir $MODPATH/system/$bin
+    mv $MODPATH/system/xbin/lkt $MODPATH/system/$bin
+    rm -rf $MODPATH/system/xbin/*
+    rmdir $MODPATH/system/xbin
+  else
+    rm -rf $MODPATH/system/bin/*
+    rmdir $MODPATH/system/bin
+  fi
   set_perm_recursive $MODPATH 0 0 0755 0644
+  set_perm_recursive $MODPATH/system/$bin 0 0 0755 0777
+  set_perm_recursive $MODPATH/service.sh 0 0 0755 0777
+  set_perm_recursive $MODPATH/uninstall.sh 0 0 0755 0777
+  set_perm_recursive $MODPATH/system/etc/Strm 0 0 0755 0777
+
 
   # 以下是一些例子:
   # set_perm_recursive  $MODPATH/system/lib       0     0       0755      0644
@@ -158,3 +179,4 @@ set_permissions() {
 }
 
 # 您可以添加更多功能来协助您的自定义脚本代码
+

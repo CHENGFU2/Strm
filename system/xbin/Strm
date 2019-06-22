@@ -1,0 +1,472 @@
+#!/system/bin/sh
+# =======================================================#
+# 模块名称: Strm
+# 作者: 酷安@橙斧
+# =======================================================#
+# THE BEST BATTERY MOD YOU CAN EVER USE
+# JUST FLASH AND FORGET
+# =======================================================#
+# Script Begins -
+# =======================================================#
+# Colors
+# =======================================================#
+BL='\e[01;90m' > /dev/null 2>&1; # Black
+R='\e[01;91m' > /dev/null 2>&1; # Red
+G='\e[01;92m' > /dev/null 2>&1; # Green
+Y='\e[01;93m' > /dev/null 2>&1; # Yellow
+B='\e[01;94m' > /dev/null 2>&1; # Blue
+P='\e[01;95m' > /dev/null 2>&1; # Purple
+C='\e[01;96m' > /dev/null 2>&1; # Cyan
+W='\e[01;97m' > /dev/null 2>&1; # White
+LG='\e[01;37m' > /dev/null 2>&1; # Light Gray 
+N='\e[0m' > /dev/null 2>&1; # Null
+# =======================================================#
+
+# Divider
+# =======================================================#
+divider="-------------------------------------------------"
+
+# =======================================================#
+MODPATH='/sbin/.core/img/legendary_kernel_tweaks' 2>/dev/null
+busybox_ndk='/sbin/.core/img/busybox-ndk' 2>/dev/null
+#busybox='/sbin/.core/mirror/bin/busybox' 2>/dev/null
+bboxname=$C"`busybox | head -1 | cut -f 2 -d ' '`"$N
+LOG="/data/Strm.prop"
+
+
+# Check Root
+# ----------------------------------------
+id="$(id)"; id="${id#*=}"; id="${id%%\(*}"; id="${id%% *}"
+if [ "$id" != "0" ] && [ "$id" != "root" ]; then
+echo ""
+echo -e $R"$divider"$N
+echo -e $R'E R R O R'$N
+echo -e $R"$divider"$N
+echo -e $W" YOU NEED ROOT ACCESS TO RUN Strm COMMANDS"$N
+echo -e $W" PLEASE TYPE" $G"su" $W"BEFORE RUNNING " $G"Strm" $W"command"$N
+echo -e $W" THEN TRY AGAIN."$N
+echo -e $R"$divider"$N
+sleep 1
+clear 
+echo -e $W'[+] Aborting...'$N
+sleep 1
+clear
+exit 0
+fi
+	case $1 in
+	    # BATTERY
+		1* | batt*) 
+		sh ${MODPATH}/service.sh "0" "0" > /dev/null 2>&1
+		exit 0
+		;;
+		
+		# BALANCED
+		2* | balan*)
+		sh ${MODPATH}/service.sh "1" "0" > /dev/null 2>&1
+		exit 0
+		;;
+		
+		# Performance
+		3* | perf*)
+		sh ${MODPATH}/service.sh "2" "0" > /dev/null 2>&1
+		exit 0
+
+		;;
+		
+		# Turbo
+		4* | turb*)
+		sh ${MODPATH}/service.sh "3" "0" > /dev/null 2>&1
+		exit 0
+
+		;;
+	esac
+# Check Busybox
+# =======================================================#
+clear
+echo "[+] Checking Busybox files"; sleep "0.1"; clear
+echo "[+] Checking Busybox files"; sleep "0.1"; clear
+
+
+if [ -d "${busybox_ndk}" ]; then
+clear
+sleep 0.1 
+echo -e $Y"$divider"$N
+echo ''
+echo -e $W"  [+] AWESOME! FOUND BUSYBOX-NDK BY osm0sis! ^_^"$N
+echo ''
+echo -e $Y"$divider"$N
+sleep 1
+
+else
+echo -e $Y"$divider"$N
+echo -e $Y'W A R N I N G'$N
+echo -e $Y"$divider"$N
+echo -e $Y"BUSYBOX NDK MODULE NOOT FOUND."$N
+echo -e $Y"IF YOU HAVE TROUBLES USING A DIFFRENET BUSYBOX."$N
+echo -e $Y"THEN PLEASE INSTALL"$N $G"BUSYBOX-NDK MODULE BY osm0sis "$N
+echo -n -e $W'[+] DO YOU WANT TO CONTINUE?'$N $Y'[Y/N]'$N: $G"$answer"$N
+read answer
+answer=$( echo "$answer" | tr '[:upper:]' '[:lower:]' )
+case ${answer} in
+y*) 
+  echo -n -e $W'[+] OPENING COMMANDS MENU '$N
+  echo -n -e $Y'•'$N; sleep 0.1;
+  echo -n -e $Y'•'$N; sleep 0.3;
+  echo -n -e $Y'•'$N; sleep 0.1;
+  sleep 0.1
+  clear 
+  
+;;
+
+n*)
+  clear
+  echo -n -e $W'[+] RETURNING '$N
+  echo -n -e $Y'•'$N; sleep 0.1;
+  echo -n -e $Y'•'$N; sleep 0.3;
+  echo -n -e $Y'•'$N; sleep 0.1;
+  sleep 0.1
+  clear 
+sleep "0.01"
+echo -e $Y"$divider"$N
+sleep "0.01"
+echo -e $Y'--------------- 感    谢 ---------------'$N
+sleep "0.01"
+echo -e $Y"$divider"$N
+echo ''
+sleep "0.01"
+echo -e $Y'        Omar Koulache - @korom42 - XDA'$N
+sleep "0.01"
+sleep 1
+clear
+exit 0
+;;
+esac
+
+
+fi
+
+# Check Strm files
+# =======================================================#
+clear
+echo "[+] Checking Strm files"; sleep "0.1"; clear
+echo "[+] Checking Strm files"; sleep "0.1"; clear
+
+if [ -e "${MODPATH}/service.sh" ]; then
+clear
+sleep 0.1 
+echo -e $Y"$divider"$N
+echo ''
+echo -e $W"  [+] AWESOME! Strm IS CORRECTLY INSTALLED! ^_^"$N
+echo ''
+echo -e $Y"$divider"$N
+sleep 1
+else
+echo -e $R"$divider"$N
+echo -e $R'E R R O R'$N
+echo -e $R"$divider"$N
+echo -e $R"Strm PROFILES ARE NOT FOUND."$N
+echo -e $R"PLEASE RE-INSTALL THE MODULE THEN TRY AGAIN"$N
+echo -e $R"IF YOU KEEP GETTING THIS ERROR YOU CAN ALWAYS."$N
+echo -e $R"CHANGE Strm PROFILE WHEN FLASHING THEN REBOOT"$N
+clear 
+sleep "0.01"
+echo -e $Y"$divider"$N
+sleep "0.01"
+echo -e $Y'---------------   感  谢     ---------------'$N
+sleep "0.01"
+echo -e $Y"$divider"$N
+echo ''
+sleep "0.01"
+echo -e $Y'        Omar Koulache - @korom42 - XDA'$N
+sleep "0.01"
+sleep 1
+clear
+exit 0
+fi
+
+# Mount Magisk
+# =======================================================#
+if [ ! -d /sbin/.core/mirror/bin ]; then
+    mkdir -p /sbin/.core/mirror/bin
+    mount -o bind /data/adb/magisk /sbin/.core/mirror/bin
+fi
+
+# Versioning & Date
+# =======================================================#
+version='1.8'$N > /dev/null 2>&1
+released=$G'APRIL 14, 2019'$N > /dev/null 2>&1
+saythanks='https://saythanks.io/to/korom42' > /dev/null 2>&1
+date=$(date "+%d.%m.%Y %H:%M:%S")
+
+# Start Echos
+# =======================================================#
+
+# Disclaimer
+# =======================================================#
+clear
+echo -e $R"$divider"$N
+echo -e $R'D I S C L A I M E R'$N
+echo -e $R"$divider"$N
+echo -e $R" Strm IS AN ADVANCED KERNEL TWEAKS COLLECTION."$N
+echo -e $R" IF YOU DON'T KNOW HOW IT WORKS THEN"$N
+echo -e $R" I WON'T BE RESPONSIBLE FOR ANY DAMAGE."$N
+echo -e $R" USE IT AT YOUR OWN RISK."$N
+echo -e $R" ALWAYS HAVE BACKUPS."$N
+echo -e $R"$divider"$N
+echo ''
+echo -e $Y"$divider"$N
+echo -e $Y'W A R N I N G'$N
+echo -e $Y"$divider"$N
+echo -e $Y"IF YOU ARE NEW TO THIS MODULE."$N
+echo -e $Y"THEN PLEASE EDUCATE YOURSLEF ABOUT IT."$N
+echo -e $Y"READ FAQ BEFORE ASKING ANYTHING."$N
+echo -e $Y"$divider"$N
+echo ''
+echo -e $P"$divider"$N
+echo -e $P'S U P P O R T  D E V E L O P M E N T'$N
+echo -e $P"$divider"$N
+echo -e $P"IF YOU LOVED THIS WORK, CONSIDER DONATING; TO"$N
+echo -e $P"KEEP THE PROJECT ALIVE AND RUNNING."$N
+echo -e $P"$divider"$N
+echo ''
+sleep 2
+
+
+# Features & Main Parts
+# =======================================================#
+while true
+do
+
+if [ -f $LOG ]; then
+  STATUS=$G" RUNNING"$N
+else
+  STATUS=$Y" LOGS NOT FOUND"$N
+fi;
+
+
+PROFILE_M=$(head -2 $LOG | awk -F: '{ print toupper($2) }'  | tr -d '\n') > /dev/null 2>&1
+
+case ${PROFILE_M} in
+		" BATTERY")
+		PROFILE=$G"$PROFILE_M"$N
+
+		;;
+		" BALANCED")
+		PROFILE=$Y"$PROFILE_M"$N
+
+		;;
+		" PERFORMANCE")
+		PROFILE=$R"$PROFILE_M"$N
+
+		;;
+		" TURBO")
+		PROFILE=$P"$PROFILE_M"$N
+
+		;;
+    *)
+    PROFILE=$Y" UNKNOWN"$N
+    ;;
+	esac
+
+
+# Aliases & Variables
+# =======================================================#
+COUNT=1
+
+
+# Starts Screen Echos
+# =======================================================#
+clear
+echo ''
+echo -e $C"    S     "$N; sleep 0.1;
+echo -e $C"  T      "$N; sleep 0.1;
+echo -e $C"  R    "$N; sleep 0.1;
+echo -e $C"     M"$N; sleep 0.1;
+echo ''
+echo -e $C'   Strm'$N 
+echo -e $C"                             v.$version"
+echo -e $C"$divider"$N
+echo -e $C'B A S I C  I N F O -'$N
+echo -e $C"$divider"$N
+echo -e $W"[+] STATUS: $STATUS"$N
+echo -e $W"[+] PROFILE:$PROFILE"$N
+echo -e $W"[+] BUSYBOX: $bboxname"$N
+echo -e $C"$divider"$N
+echo -n -e $C'                        •'$N;
+echo -n -e $C'•'$N;
+echo -n -e $C'•'$N;
+# Profiles
+# =======================================================#
+echo -e $C"S t r m -"$N
+echo -e $C"$divider"$N
+echo -e $W"[1] Battery         [3] Performance"$N
+echo -e $W"[2] Balanced        [4] Turbo"$N
+echo -e $C"$divider"$N
+echo -e $C'OTHER OPTIONS -'$N
+echo -e $C"$divider"$N
+echo -e $W'[x] Exit'$N
+echo -e $W'[h] Help'$N
+echo -e $W'[j] Join chat channel (Telegram)'$N
+echo -e $W'[tk] Say Thanks to developer '$N
+echo -e $W'[d] Donate to developer <3'$N
+
+echo -e $C"$divider"$N
+
+# Read Input
+# =======================================================#
+		echo -n $C"[+] Your Input - "$N
+		read -r INPUT 
+		INPUT=$( echo "$INPUT" | tr '[:upper:]' '[:lower:]' )
+		DIR=""
+	
+	case ${INPUT} in
+	    # BATTERY
+		1* | batt*) 
+		clear
+		echo -e $Y"$divider"$N
+		sleep "0.01"
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BATTERY PROFILE'$N; sleep "0.1"; clear
+		echo -e $G'[+] APPLYING BATTERY ... PLEASE WAIT'$N
+		sh ${MODPATH}/service.sh "0" "0" > /dev/null 2>&1
+		;;
+		
+		# BALANCED
+		2* | balan*)
+		clear
+		echo -e $Y"$divider"$N
+		sleep "0.01"
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING BALANCED PROFILE'$N; sleep "0.1"; clear
+		echo -e $G'[+] APPLYING BALANCED PROFILE ... PLEASE WAIT'$N
+		sh ${MODPATH}/service.sh "1" "0" > /dev/null 2>&1
+		;;
+		
+		# Performance
+		3* | perf*)
+		clear
+		echo -e $Y"$divider"$N
+		sleep "0.01"
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING PERFORMANCE PROFILE'$N; sleep "0.1"; clear
+		echo -e $G'[+] APPLYING PERFORMANCE PROFILE ... PLEASE WAIT'$N
+		sh ${MODPATH}/service.sh "2" "0" > /dev/null 2>&1
+		;;
+		
+		# Turbo
+		4* | turb*)
+		clear
+		echo -e $Y"$divider"$N
+		sleep "0.01"
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo $W'[+] APPLYING TURBO PROFILE'$N; sleep "0.1"; clear
+		echo -e $G'[+] APPLYING TURBO PROFILE ... PLEASE WAIT'$N
+		sh ${MODPATH}/service.sh "3" "0" > /dev/null 2>&1
+		;;
+		
+		# Donate
+
+		am start -a android.intent.action.VIEW -d "酷安@城府" > /dev/null 2>&1
+		;;
+		
+		# Exit
+		# =======================================================#
+		"q" | "x" | "exit") break
+		clear
+		reset
+		;;
+		
+		*)
+		echo -e $R"$divider"$N
+			echo -e $R"----------- I N V A L I D  I N P U T ! ----------"$N
+			echo -e $R"$divider"$N
+			sleep "0.5"
+		;;
+		esac
+		
+		COUNT=$((COUNT+1))
+		clear
+		reset
+		
+		case ${INPUT} in
+		1* | 2* | 3* | 4* | batt* | balan* | perf* | turb*)
+		echo -e $G'[+] DONE'$N
+		sleep 0.1
+		echo -e $W'[+] NO NEED TO REBOOT AFTER APPLYING.'$N
+		sleep 0.5
+		echo -e $Y"$divider"$N
+		sleep 0.1
+		echo -e $Y'[+] If you loved this work, consider donating.'$N
+		sleep 0.1
+		;;
+		esac
+		echo -e $W'[+] Returning...'$N
+		sleep 0.5
+		clear
+    done	
+		
+# Script Ends
+# =======================================================#
+clear 
+sleep "0.01"
+echo -e $Y"$divider"$N
+sleep "0.01"
+echo -e $Y'---------------       感   谢     ---------------'$N
+sleep "0.01"
+echo -e $Y"$divider"$N
+echo ''
+sleep "0.01"
+echo -e $Y'        城府@酷安
+sleep "0.01"
+sleep 1.25
+clear 
+sleep "0.01"
+echo -e $G"$divider"$N
+sleep "0.01"
+echo -n -e $G"#   "$N; sleep "0.01"; 
+echo -n -e $W'E '$N; sleep "0.01"; 
+echo -n -e $W'N '$N; sleep "0.01"; 
+echo -n -e $W'O '$N; sleep "0.01"; 
+echo -n -e $W'J '$N; sleep "0.01"; 
+echo -n -e $W' A '$N; sleep "0.01"; 
+echo -n -e $W' N '$N; sleep "0.01"; 
+echo -n -e $W'E '$N; sleep "0.01"; 
+echo -n -e $W'W '$N; sleep "0.01"; 
+echo -n -e $W' E '$N; sleep "0.01"; 
+echo -n -e $W'X '$N; sleep "0.01"; 
+echo -n -e $W'P '$N; sleep "0.01"; 
+echo -n -e $W'E '$N; sleep "0.01"; 
+echo -n -e $W'R '$N; sleep "0.01"; 
+echo -n -e $W'I '$N; sleep "0.01"; 
+echo -n -e $W'E '$N; sleep "0.01"; 
+echo -n -e $W'N '$N; sleep "0.01"; 
+echo -n -e $W'C '$N; sleep "0.01";
+echo -n -e $W'E '$N; sleep "0.01"; 
+echo -e $G'   #'$N;
+sleep "0.01"
+echo -e $G"$divider"$N
+echo ""
+sleep 1
+clear 
+exit 0
+
