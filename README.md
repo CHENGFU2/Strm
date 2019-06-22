@@ -1,4 +1,4 @@
-# Strm ByChengfu
+# Strm 
 ## Description
 The GPU Turbo tweak claims to increase the phone’s GPU power by up to 75% but at the same time reduces power consumption by up to 25%
 
