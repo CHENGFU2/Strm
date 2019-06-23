@@ -83,4 +83,25 @@ debug.doze.component=0
 # Set default power mode to low power for encoder
 # vidc.debug.perf.mode=2
 
+wifi.supplicant_scan_interval=180
+persist.sys.purgeable_assets=1
+persist.service.pcsync.enable=0
+persist.service.lgospd.enable=0
+debug.atrace.tags.enableflags=0
+debug.kill_allocating_task=0
+debugtool.anrhistory=0
+profiler.force_disable_ulog=true
+profiler.force_disable_err_rpt=true
+profiler.force_disable_err_rpt=1
+ro.config.nocheckin=1
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+ro.debuggable=1
+dalvik.vm.checkjni=false
+profiler.debugmonitor=false
+profiler.launch=false
+profiler.hung.dumpdobugreport=false
+profiler.force_disable_ulog=1
+
+
 #This imitation part of the code comes from LKT

@@ -66,7 +66,7 @@ print_modname() {
 ui_print "=========================="
 ui_print "                                                                   "
 ui_print "         Strm（magisk）                 "
-ui_print "          V4.0                                   "
+ui_print "          V4.5.5                                   "
 ui_print "       "   
 ui_print "=========================="
 ui_print "-QQ群:985974164               "

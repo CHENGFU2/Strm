@@ -1,4 +1,5 @@
 #!/system/bin/sh
+MODDIR=${0%/*}
 
 /system/etc/Strm/r.sh > /dev/null 2>&1 &
 
@@ -850,7 +851,7 @@ set_io() {
 			if [ ${PROFILE} -ge 2 ];then
 			write $2/queue/read_ahead_kb 512
 			else
-			write $2/queue/read_ahead_kb 128
+			write $2/queue/read_ahead_kb 512
 			fi
 			for i in /sys/block/*/queue/iosched; do
 			  write $i/low_latency 0;
@@ -884,10 +885,10 @@ set_io() {
 			  write $i/writes_starved 3;
 			done;
 			for i in /sys/block/*/queue/iosched; do
-			  write $i/read_ahead_kb 128;
+			  write $i/read_ahead_kb 512;
 			done;
 			else
-			write $2/queue/read_ahead_kb 128
+			write $2/queue/read_ahead_kb 512
 			fi
   		fi
 	fi
@@ -3553,12 +3554,12 @@ if [[ $sch == *"maple"* ]]; then
    write $DM_PATH/iosched/sync_read_expire 333;
    write $DM_PATH/iosched/sync_write_expire 1166;
    write $DM_PATH/iosched/writes_starved 3;
-   write $DM_PATH/iosched/read_ahead_kb 128;
+   write $DM_PATH/iosched/read_ahead_kb 512;
 if [ -e "/sys/devices/virtual/block/dm-0/bdi/read_ahead_kb" ]; then
    if [ ${PROFILE} -ge 2 ];then
    write /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb 2048
    else
-   write /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb 128
+   write /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb 512
    fi
 fi
 
@@ -3566,7 +3567,7 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
    if [ ${PROFILE} -ge 2 ];then
    write /sys/block/sda/bdi/read_ahead_kb 2048
    else
-   write /sys/block/sda/bdi/read_ahead_kb 128
+   write /sys/block/sda/bdi/read_ahead_kb 512
    fi
 fi
 else
@@ -3583,7 +3584,7 @@ if [ -e "/sys/devices/virtual/block/dm-0/bdi/read_ahead_kb" ]; then
    if [ ${PROFILE} -ge 2 ];then
    write /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb 512
    else
-   write /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb 128
+   write /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb 512
    fi
 fi
 
@@ -3591,7 +3592,7 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
    if [ ${PROFILE} -ge 2 ];then
    write /sys/block/sda/bdi/read_ahead_kb 512
    else
-   write /sys/block/sda/bdi/read_ahead_kb 128
+   write /sys/block/sda/bdi/read_ahead_kb 512
    fi
 fi
 fi

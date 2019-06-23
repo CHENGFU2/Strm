@@ -1,11 +1,11 @@
-if [ -e "/data/LKT.prop" ]; then
-    rm -f "/data/LKT.prop"
+if [ -e "/data/Strm.prop" ]; then
+    rm -f "/data/Strm.prop"
 fi
 if [ -e "/data/soc.txt" ]; then
     rm -f "/data/soc.txt"
 fi
-if [ -e "/data/adb/lktprofile.txt" ]; then
-    rm "/data/adb/lktprofile.txt"
+if [ -e "/data/adb/Strmprofile.txt" ]; then
+    rm "/data/adb/Strmprofile.txt"
 fi
 if [ -e "/data/adb/dynamic_stune_boost.txt" ]; then
     rm "/data/adb/dynamic_stune_boost.txt"
