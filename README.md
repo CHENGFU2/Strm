@@ -25,10 +25,10 @@ This idea is similar to <code>EAS</code>, which takes into account both performa
 * v1.0 - Initial Releaase
 * v2.0 - Various fixes, Removed unused codes, Added GPU specific functionalities, Fixed Black Screen and Game Graphic glitches.
 
-##Download
+## Download
 https://www.lanzous.com/b797122
 
-##Author contact
+## Author contact
 QQ:1229992436
 phone:+86 15008004292
 
