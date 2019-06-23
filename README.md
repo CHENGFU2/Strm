@@ -25,3 +25,9 @@ This idea is similar to <code>EAS</code>, which takes into account both performa
 * v1.0 - Initial Releaase
 * v2.0 - Various fixes, Removed unused codes, Added GPU specific functionalities, Fixed Black Screen and Game Graphic glitches.
 
+## Statement
+This module uses the LKT part of the source code.
+Thanks LKT for contributing to this module
+
+
+
