@@ -4,8 +4,8 @@ chmod -R 0755 $TMPDIR/addon/Volume-Key-Selector/tools
 cp -R $TMPDIR/addon/Volume-Key-Selector/tools $UF 2>/dev/null
 
 keytest() {
-  ui_print "- Vol Key Test -"
-  ui_print "  Press a Vol Key"
+  ui_print "- 按上音量键进行测试 -"
+  ui_print "  按下音量键"
   (/system/bin/getevent -lc 1 2>&1 | /system/bin/grep VOLUME | /system/bin/grep " DOWN" > $TMPDIR/events) || return 1
   return 0
 }
@@ -41,7 +41,7 @@ chooseportold() {
   elif [ $SEL -eq $DOWN ]; then
     return 1
   else
-    abort "  Vol key not detected! Aborting!"
+    abort " 没有检测到按上音量键！停止！"
   fi
 }
 
@@ -55,20 +55,20 @@ fi
 OIFS=$IFS; IFS=\|; MID=false; NEW=false
 if [ -z $PROFILEMODE ] ; then
 case $(echo $(basename $ZIPFILE) | tr '[:upper:]' '[:lower:]') in
-  *batt*) PROFILEMODE=0 ui_print "- Skipping Vol Keys -";;
-  *balanc*) PROFILEMODE=1 ui_print "- Skipping Vol Keys -";;
-  *perf*) PROFILEMODE=2 ui_print "- Skipping Vol Keys -";;
-  *turb*) PROFILEMODE=3 ui_print "- Skipping Vol Keys -";;
+  *batt*) PROFILEMODE=0 ui_print "- .跳过";;
+  *balanc*) PROFILEMODE=1 ui_print "- 跳过 -";;
+  *perf*) PROFILEMODE=2 ui_print "- 跳过-";;
+  *turb*) PROFILEMODE=3 ui_print "- 跳过 -";;
   *) if keytest; then
        VKSEL=chooseport
      else
        VKSEL=chooseportold
-       ui_print "  ! Legacy device detected! Using old keycheck method"
+       ui_print "  ! 检测到旧设备！ 使用旧的方法"
        ui_print " "
-       ui_print "- Vol Key Programming -"
-       ui_print "  Press Vol Up Again:"
+       ui_print "- 请照以下来按音量键 -"
+       ui_print " 请按上音量键"
        $VKSEL "UP"
-       ui_print "  Press Vol Down"
+       ui_print "  请按下音量键"
        $VKSEL "DOWN"
      fi;;
 esac

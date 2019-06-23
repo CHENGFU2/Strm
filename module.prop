@@ -1,6 +1,9 @@
 id=Strm
 name=Strm
-version=V3.4
-versionCode=3400
-author=Chengfy
-description=The GPU Turbo tweak claims to increase the phone’s GPU power by up to 75% but at the same time reduces power consumption by up to 25%(This imitation part of the code comes from LKT)
+version=v4.0
+versionCode=4000
+author=Chengfu
+description=advanced governor and kernel tweaks collection that aims to greatly enhance power efficiency and performanc
+minMagisk=1530
+
+
