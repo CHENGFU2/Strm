@@ -3,6 +3,7 @@ MODDIR=${0%/*}
 
 /system/etc/Strm/r.sh > /dev/null 2>&1 &
 
+#This imitation part of the code comes from LKT
 write() {
     echo -n $2 > $1
 }
