@@ -3,7 +3,7 @@
 The Strm tweak claims to increase the phone’s GPU power by up to 75% but at the same time reduces power consumption by up to 25%
 
 ## What it does
-This module uses the tool "resetprop" to modify the default values found in build.prop to enhance gpu and accelerates your device performance to the highest level!.
+Use AI's controls to fully optimize your phone to improve the performance of your phone.
 
 ## Requirements
 * Magisk v15.0 or higher
