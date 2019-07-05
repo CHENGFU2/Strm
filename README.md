@@ -1,6 +1,6 @@
 # Strm (Strm Turbo)
 ## Description
-The GPU Turbo tweak claims to increase the phone’s GPU power by up to 75% but at the same time reduces power consumption by up to 25%
+The Strm tweak claims to increase the phone’s GPU power by up to 75% but at the same time reduces power consumption by up to 25%
 
 ## What it does
 This module uses the tool "resetprop" to modify the default values found in build.prop to enhance gpu and accelerates your device performance to the highest level!.
@@ -17,7 +17,7 @@ We use AI manual training to train.
 For example: record your daily habits and optimize your phone
 Save power for your favorite applications.
 
-##AI
+## AI
 First, the AI brain controls the ZRAM, and then begins to control the SOC in all aspects, and fine-tunes the system.
 
 
