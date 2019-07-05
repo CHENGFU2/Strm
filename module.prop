@@ -1,7 +1,7 @@
 id=Strm
 name=Strm
-version=v4.5.7
-versionCode=4570
+version=101
+versionCode=10001
 author=Chengfu
 description=advanced governor and kernel tweaks collection that aims to greatly enhance power efficiency and performanc
 minMagisk=1530

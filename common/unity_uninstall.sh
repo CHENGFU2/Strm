@@ -1,4 +1,4 @@
-if [ -e "/data/Strm.prop" ]; then
+if [ -e "/data/Strm/strm.prop" ]; then
     rm -f "/data/Strm.prop"
 fi
 if [ -e "/data/soc.txt" ]; then

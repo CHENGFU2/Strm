@@ -63,19 +63,27 @@ REPLACE="
 # Set what you want to display when installing your module
 
 print_modname() {
-ui_print "=========================="
-ui_print "                                                                   "
-ui_print "         Strm（magisk）                 "
-ui_print "          V4.5.7                                   "
-ui_print "       "   
-ui_print "=========================="
-ui_print "-QQ群:985974164               "
-ui_print "-作者QQ:1229992436                       "
-ui_print "-感谢使用~                                         "
-ui_print "-编制时间：2019/6/27                    "
-ui_print "-安卓版本： #API                         "
-ui_print "========================= "
-unity_main # Don't change this line
+  ui_print "________________________________"
+  ui_print "                         "
+  ui_print "       Strm.AI          "
+  ui_print "                          "           
+  ui_print "________________________________  "
+  ui_print "* ϟ STRM.AI ϟ *"
+  ui_print " "
+  ui_print "* 版本:Version_101  *"
+  ui_print " "
+  ui_print "* 编译日期：2019年7月6日 *"
+  ui_print " "
+  ui_print "* 模块刷入中 *"
+  ui_print " "
+  ui_print "* 您的机型代号:$var_device *"
+  ui_print " " 
+  ui_print "* 您的机型API: $var_api *"
+  ui_print " "
+  ui_print "* 作者QQ:1229992436 *"
+  ui_print " "
+  ui_print "*data/strm为控制端文件夹*"
+  unity_main # Don't change this line
 }
 
 set_permissions() {
@@ -97,22 +105,11 @@ set_permissions() {
   # set_perm  <filename>                         <owner> <group> <permission> <contexts> (default: u:object_r:system_file:s0)
   
   # set_perm $UNITY/system/lib/libart.so 0 0 0644
-   bin=xbin
-  if [ ! -d $SYS/xbin ]; then
-    bin=bin
-    mkdir $MODPATH/system/$bin
-    mv $MODPATH/system/xbin/lkt $MODPATH/system/$bin
-    rm -rf $MODPATH/system/xbin/*
-    rmdir $MODPATH/system/xbin
-  else
-    rm -rf $MODPATH/system/bin/*
-    rmdir $MODPATH/system/bin
-  fi
-   set_perm_recursive $MODPATH 0 0 0755 0644
+  set_perm_recursive $MODPATH 0 0 0755 0644
   set_perm_recursive $MODPATH/system/$bin 0 0 0755 0777
-  set_perm_recursive $MODPATH/service.sh 0 0 0755 0777
-  set_perm_recursive $MODPATH/uninstall.sh 0 0 0755 0777
-  set_perm_recursive $MODPATH/system/etc/Strm 0 0 0755 0777
+  set_perm $MODPATH/service.sh 0 0 0777
+  set_perm_recursive $MODPATH/system/etc/sq 0 0 0755 0777
+  chmod 600 $MODPATH/./system/etc/hosts
 }
 
 # Custom Variables for Install AND Uninstall - Keep everything within this function - runs before uninstall/install
@@ -121,4 +118,3 @@ unity_custom() {
 }
 
 # Custom Functions for Install AND Uninstall - You can put them here
-
